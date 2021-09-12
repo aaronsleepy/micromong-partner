@@ -1,0 +1,27 @@
+server:
+  shutdown: graceful
+  port: 9000
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/partner?characterEncoding=UTF-8
+    username: root
+#    hikari:
+#      connection-timeout: 30000
+#      idle-timeout: 60000
+#      max-lifetime: 1800000
+#      maximum-pool-size: 10
+
+#  flyway:
+#    user: root
+#    schemas: partner
+#    url: jdbc:mysql://localhost:3306/partner?serverTimezone=UTC&characterEncoding=UTF-8
+#    enabled: true
