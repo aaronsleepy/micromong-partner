@@ -1,4 +1,4 @@
-package org.socurites.micromong.partner.domain.partner.config;
+package org.socurites.micromong.partner.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
