@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.socurites.micromong.partner.domain.AbstractEntity;
 
 import javax.persistence.*;
 import java.security.InvalidParameterException;

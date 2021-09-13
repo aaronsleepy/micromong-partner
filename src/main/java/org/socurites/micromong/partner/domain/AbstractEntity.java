@@ -1,4 +1,4 @@
-package org.socurites.micromong.partner.domain.partner;
+package org.socurites.micromong.partner.domain;
 
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
