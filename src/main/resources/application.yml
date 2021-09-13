@@ -20,8 +20,8 @@ spring:
 #      max-lifetime: 1800000
 #      maximum-pool-size: 10
 
-#  flyway:
-#    user: root
-#    schemas: partner
-#    url: jdbc:mysql://localhost:3306/partner?serverTimezone=UTC&characterEncoding=UTF-8
-#    enabled: true
+  flyway:
+    user: root
+    schemas: partner
+    url: jdbc:mysql://localhost:13306/partner?characterEncoding=UTF-8
+    enabled: true
