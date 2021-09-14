@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.socurites.micromong.partner.common.exception.InvalidParamException;
 import org.socurites.micromong.partner.domain.AbstractEntity;
 
 import javax.persistence.*;
-import java.security.InvalidParameterException;
 import java.util.UUID;
 
 @Slf4j
@@ -41,9 +41,9 @@ public class Partner extends AbstractEntity {
 
     @Builder
     public Partner(String partnerName, String businessNo, String email) {
-        if (StringUtils.isEmpty(partnerName)) throw new InvalidParameterException("empty partnerName");
-        if (StringUtils.isEmpty(businessNo)) throw new InvalidParameterException("empty businessNo");
-        if (StringUtils.isEmpty(email)) throw new InvalidParameterException("empty email");
+        if (StringUtils.isEmpty(partnerName)) throw new InvalidParamException("empty partnerName");
+        if (StringUtils.isEmpty(businessNo)) throw new InvalidParamException("empty businessNo");
+        if (StringUtils.isEmpty(email)) throw new InvalidParamException("empty email");
 
         this.partnerName = partnerName;
         this.businessNo = businessNo;

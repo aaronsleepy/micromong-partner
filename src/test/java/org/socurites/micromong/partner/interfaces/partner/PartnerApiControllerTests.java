@@ -4,11 +4,14 @@ import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.socurites.micromong.partner.common.response.CommonResponse;
+import org.socurites.micromong.partner.common.response.ErrorCode;
 import org.socurites.micromong.partner.infrastructure.partner.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -41,14 +44,15 @@ public class PartnerApiControllerTests {
                 .email(email)
                 .build();
 
-        ResponseEntity<PartnerDto.RegisterResponse> responseEntity = restTemplate.exchange(requestUrl,
+        CommonResponse<PartnerDto.RegisterResponse> commonResponse = restTemplate.exchange(requestUrl,
                 HttpMethod.POST,
                 new HttpEntity<>(request),
-                PartnerDto.RegisterResponse.class);
-        
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+                new ParameterizedTypeReference<CommonResponse<PartnerDto.RegisterResponse>>() {
+                }).getBody();
 
-        PartnerDto.RegisterResponse response = responseEntity.getBody();
+        assertThat(commonResponse.getResult()).isEqualTo(CommonResponse.Result.SUCCESS);
+
+        PartnerDto.RegisterResponse response = commonResponse.getData();
         assertThat(partnerName).isEqualTo(response.getPartnerName());
         assertThat(businessNo).isEqualTo(response.getBusinessNo());
         assertThat(email).isEqualTo(response.getEmail());
@@ -70,11 +74,13 @@ public class PartnerApiControllerTests {
                 .email(email)
                 .build();
 
-        ResponseEntity<PartnerDto.RegisterResponse> responseEntity = restTemplate.exchange(requestUrl,
+        CommonResponse<PartnerDto.RegisterResponse> commonResponse = restTemplate.exchange(requestUrl,
                 HttpMethod.POST,
                 new HttpEntity<>(request),
-                PartnerDto.RegisterResponse.class);
+                new ParameterizedTypeReference<CommonResponse<PartnerDto.RegisterResponse>>() {
+                }).getBody();
 
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        assertThat(commonResponse.getResult()).isEqualTo(CommonResponse.Result.FAIL);
+        assertThat(commonResponse.getErrorCode()).isEqualTo(ErrorCode.COMMON_INVALID_PARAMETER.name());
     }
 }
