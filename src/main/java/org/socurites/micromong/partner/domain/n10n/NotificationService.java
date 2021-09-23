@@ -1,7 +1,9 @@
 package org.socurites.micromong.partner.domain.n10n;
 
+import org.socurites.micromong.partner.infrastructure.n10.NotificationDto;
+
 public interface NotificationService {
-    void sendEmail(String email, String title, String body);
-    void sendKakao(String phoneNo, String body);
-    void sendSms(String phoneNo, String body);
+    void sendEmail(NotificationDto.SendRequest request);
+    void sendKakao(NotificationDto.SendRequest request);
+    void sendSms(NotificationDto.SendRequest request);
 }

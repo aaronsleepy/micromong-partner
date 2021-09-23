@@ -14,9 +14,6 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
@@ -27,9 +24,6 @@ public class PartnerApiControllerTests {
 
     @Autowired
     private TestRestTemplate restTemplate;
-
-    @Autowired
-    private PartnerRepository partnerRepository;
 
     @Test
     public void registerPartnerSuccess() {

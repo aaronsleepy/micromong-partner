@@ -25,3 +25,6 @@ spring:
     schemas: partner
     url: jdbc:mysql://localhost:13306/partner?characterEncoding=UTF-8
     enabled: true
+service:
+  notification:
+    base-url: http://localhost:9001
