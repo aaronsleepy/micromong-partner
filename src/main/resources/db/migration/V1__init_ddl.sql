@@ -1,3 +1,8 @@
+-- partner database
+CREATE DATABASE IF NOT EXISTS `partner`;
+
+USE `partner`;
+
 -- partner
 create table partners
 (

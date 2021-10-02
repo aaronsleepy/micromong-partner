@@ -3,6 +3,10 @@ server:
   port: 9000
 
 spring:
+  application:
+    name: micromong-partner
+  config:
+    import: "aws-parameterstore:"
   lifecycle:
     timeout-per-shutdown-phase: 20s
   jpa:
@@ -12,19 +16,24 @@ spring:
     open-in-view: false
   datasource:
 #    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:13306/partner?characterEncoding=UTF-8
-    username: root
-#    hikari:
+    url: jdbc:mariadb://rds-micromong-public.c3m5ltpsckg0.us-east-2.rds.amazonaws.com:3306/partner?characterEncoding=UTF-8
+#    username: "RDS username"
+#    password: "RDS password"
+  #    hikari:
 #      connection-timeout: 30000
 #      idle-timeout: 60000
 #      max-lifetime: 1800000
 #      maximum-pool-size: 10
 
   flyway:
-    user: root
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
     schemas: partner
-    url: jdbc:mysql://localhost:13306/partner?characterEncoding=UTF-8
+    url: jdbc:mariadb://rds-micromong-public.c3m5ltpsckg0.us-east-2.rds.amazonaws.com:3306?characterEncoding=UTF-8
     enabled: true
 service:
   notification:
     base-url: http://localhost:9001
+aws:
+  paramstore:
+    region: us-east-2
