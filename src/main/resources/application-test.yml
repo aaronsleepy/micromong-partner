@@ -33,7 +33,7 @@ spring:
     enabled: true
 service:
   notification:
-    base-url: http://localhost:9001
+    base-url: http://10.0.0.200:9001
 aws:
   paramstore:
     region: us-east-2
